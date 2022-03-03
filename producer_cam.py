@@ -1,3 +1,9 @@
+import time
+import sys
+import cv2
+
+from kafka import KafkaProducer
+from kafka.errors import KafkaError
 
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 topic = 'my-topic'
