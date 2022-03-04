@@ -9,9 +9,6 @@ import yolox_pb2, yolox_pb2_grpc
 
 from utils import predict
 
-import base64
-
-
 class Greeter(yolox_pb2_grpc.YoloxServicer):
 
     def Inference(self, request, context):
