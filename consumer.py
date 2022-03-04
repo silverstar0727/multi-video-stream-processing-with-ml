@@ -11,7 +11,10 @@ consumer = KafkaConsumer("VideoStream", bootstrap_servers=bootstrap_servers)
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
 for msg_idx, message in enumerate(consumer):
-    results = predict(message.value)
+    np_arr = np.frombuffer(message.value, dtype=np.uint8)
+    img_arr = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
+    results = predict(img_arr)
     encoded_results = json.dumps(results).encode('utf-8')
 
     producer.send("ResultStream", encoded_results)
