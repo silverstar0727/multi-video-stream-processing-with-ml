@@ -16,7 +16,8 @@ class Greeter(yolox_pb2_grpc.YoloxServicer):
 
     def Inference(self, request, context):
         data = base64.b64decode(request.b64image)
-        img_arr = np.frombuffer(data, dtype=np.uint8).reshape(1080, 1920, -1)
+        img_arr = np.frombuffer(data, dtype=np.uint8)
+        img_arr = img_arr.reshape(request.width, request.height, -1)
 
         results = predict(img_arr)
         return yolox_pb2.Prediction(bbox_arr=b"abcdefghijklmnop")

@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0byolox.proto\x12\x05yolox\"\x1c\n\x08\x42\x36\x34Image\x12\x10\n\x08\x62\x36\x34image\x18\x01 \x01(\t\"\x1e\n\nPrediction\x12\x10\n\x08\x62\x62ox_arr\x18\x02 \x01(\t2:\n\x05Yolox\x12\x31\n\tInference\x12\x0f.yolox.B64Image\x1a\x11.yolox.Prediction\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0byolox.proto\x12\x05yolox\";\n\x08\x42\x36\x34Image\x12\x10\n\x08\x62\x36\x34image\x18\x01 \x01(\t\x12\r\n\x05width\x18\x02 \x01(\x05\x12\x0e\n\x06height\x18\x03 \x01(\x05\"\x1e\n\nPrediction\x12\x10\n\x08\x62\x62ox_arr\x18\x02 \x01(\t2:\n\x05Yolox\x12\x31\n\tInference\x12\x0f.yolox.B64Image\x1a\x11.yolox.Prediction\"\x00\x62\x06proto3')
 
 
 
@@ -39,9 +39,9 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _B64IMAGE._serialized_start=22
-  _B64IMAGE._serialized_end=50
-  _PREDICTION._serialized_start=52
-  _PREDICTION._serialized_end=82
-  _YOLOX._serialized_start=84
-  _YOLOX._serialized_end=142
+  _B64IMAGE._serialized_end=81
+  _PREDICTION._serialized_start=83
+  _PREDICTION._serialized_end=113
+  _YOLOX._serialized_start=115
+  _YOLOX._serialized_end=173
 # @@protoc_insertion_point(module_scope)
