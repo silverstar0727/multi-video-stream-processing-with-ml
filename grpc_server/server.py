@@ -14,9 +14,9 @@ class Greeter(yolox_pb2_grpc.YoloxServicer):
 
     def Inference(self, request, context):
         results = predict(request.b64image)
-        encoded_results = base64.b64encode(results)
+        # encoded_results = base64.b64encode(results)
 
-        return yolox_pb2.Prediction(bbox_arr=b"abc") # 결과 반환
+        # return yolox_pb2.Prediction(bbox_arr=results) # 결과 반환
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

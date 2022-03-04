@@ -2,6 +2,7 @@ from kafka import KafkaConsumer
 
 import cv2
 import numpy as np
+import base64
 
 from utils import predict, grpc_call
 
@@ -16,7 +17,15 @@ if inference_type == "local":
 
 if inference_type == "grpc":
     for msg_idx, message in enumerate(consumer):
-        results = grpc_call(message.value)
+        np_arr = np.frombuffer(message.value, dtype=np.uint8)
+        cv2_img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
+        byte_arr = base64.b64encode(cv2_img)
+
+        results = grpc_call(byte_arr)
+
+        if msg_idx == 0:
+            break
 
 if inference_type == "rest":
     pass
