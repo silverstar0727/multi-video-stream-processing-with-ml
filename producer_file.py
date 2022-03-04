@@ -5,10 +5,7 @@ import glob
 import os
 import time
 
-def serializeImg(img):
-    _, img_buffer_arr = cv2.imencode(".jpg", img)
-    img_bytes = img_buffer_arr.tobytes()
-    return img_bytes
+from utils import serializeImg
 
 class ProducerThread:
     def __init__(self, ):

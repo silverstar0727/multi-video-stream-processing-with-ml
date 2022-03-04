@@ -28,6 +28,12 @@ def grpc_call(img_arr):
     return response.bbox_arr
 
 
+def serializeImg(img):
+    _, img_buffer_arr = cv2.imencode(".jpg", img)
+    img_bytes = img_buffer_arr.tobytes()
+    return img_bytes
+
+
 def predict(img_arr):
     model_path="./models/yolox-medium-onnx-ap50-75.onnx"
 
