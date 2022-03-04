@@ -15,7 +15,10 @@ def grpc_call(byte_arr, grpc_server_url="localhost:50051"):
     return response.bbox_arr
 
 
-def predict(cv2_img):
+def predict(byte_img):
+    np_arr = np.frombuffer(byte_img, dtype=np.uint8)
+    cv2_img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
     model_path="./models/yolox-medium-onnx-ap50-75.onnx"
 
     origin_img = cv2.cvtColor(np.array(cv2_img), cv2.COLOR_RGB2BGR)
