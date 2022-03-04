@@ -43,7 +43,7 @@ class ProducerThread:
         print("finished")
 
 if __name__ == "__main__":
-    video_dir = "/home/dojm.ex5/multi-video-stream/"
+    video_dir = "/home/dojm.ex5/multi-video-stream/videos"
     video_paths = glob.glob(video_dir + "*.mp4")
     print(video_paths)
 
