@@ -6,6 +6,7 @@ import logging
 
 import grpc
 import yolox_pb2, yolox_pb2_grpc
+import json
 
 from utils import predict
 
@@ -17,11 +18,9 @@ class Greeter(yolox_pb2_grpc.YoloxServicer):
         img_arr = img_arr.reshape(request.width, request.height, -1)
 
         results = predict(img_arr)
-        return yolox_pb2.Prediction(bbox_arr=b"abcdefghijklmnop")
+        results = json.dumps(results).encode('utf-8')
 
-        # encoded_results = base64.b64encode(results)
-
-        # return yolox_pb2.Prediction(bbox_arr=results) # 결과 반환
+        return yolox_pb2.Prediction(bbox_arr=results)
 
 def serve():
     options = [
