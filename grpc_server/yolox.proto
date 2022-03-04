@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package yolox;
+
+service Yolox{
+    rpc Inference(B64Image) returns (Prediction) {}
+}
+
+
+message B64Image {
+    string b64image = 1;
+}
+
+message Prediction {
+    string bbox_arr = 2;
+}
