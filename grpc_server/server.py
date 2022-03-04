@@ -7,20 +7,16 @@ import logging
 import grpc
 import yolox_pb2, yolox_pb2_grpc
 
-def predict(b64img, w, h):
-    b64decoded = base64.b64decode(b64img)
-
-    imgarr = np.frombuffer(b64decoded, dtype=np.uint8).reshape(w, h, -1)
-
-    return imgarr.shape[2], np.mean(imgarr)
+from utils import predict
 
 
 class Greeter(yolox_pb2_grpc.YoloxServicer):
 
     def Inference(self, request, context):
+        results = predict(request.b64image)
+        encoded_results = base64.b64encode(results)
 
-        return yolox_pb2.Prediction(bbox_arr='Hello, %s!' % request.b64image) # 결과 반환
-
+        return yolox_pb2.Prediction(bbox_arr=b"abc") # 결과 반환
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
