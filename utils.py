@@ -4,13 +4,10 @@ import cv2
 import onnxruntime
 
 
-def predict(byte_img):
-    np_arr = np.frombuffer(byte_img, dtype=np.uint8)
-    cv2_img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-
+def predict(img_arr):
     model_path="./models/yolox-medium-onnx-ap50-75.onnx"
 
-    origin_img = cv2.cvtColor(np.array(cv2_img), cv2.COLOR_RGB2BGR)
+    origin_img = cv2.cvtColor(np.array(img_arr), cv2.COLOR_RGB2BGR)
     # origin_img = cv2.imread(img_path)
     # print(origin_img.shape)
 
