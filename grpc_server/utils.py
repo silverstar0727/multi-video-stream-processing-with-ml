@@ -6,15 +6,6 @@ import onnxruntime
 import grpc 
 import yolox_pb2, yolox_pb2_grpc
 
-def grpc_call(byte_arr, grpc_server_url="localhost:50051"):
-    channel = grpc.insecure_channel(grpc_server_url)
-
-    stub = yolox_pb2_grpc.YoloxStub(channel)
-    response = stub.Inference(yolox_pb2.B64Image(b64image=byte_arr))
-
-    return response.bbox_arr
-
-
 def predict(img_arr):
     model_path="./models/yolox-medium-onnx-ap50-75.onnx"
 
