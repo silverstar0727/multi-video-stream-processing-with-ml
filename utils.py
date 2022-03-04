@@ -1,16 +1,29 @@
 import numpy as np
 import cv2
+import base64
 
 import onnxruntime
 
 import grpc 
 import yolox_pb2, yolox_pb2_grpc
 
-def grpc_call(byte_arr, grpc_server_url="localhost:50051"):
-    channel = grpc.insecure_channel(grpc_server_url, options=(('grpc.enable_http_proxy', 0),))
 
+def grpc_call(img_arr):
+    options = [
+        ('grpc.max_send_message_length', 1024 * 1024 * 1024), 
+        # ('grpc.max_receive_message_length', 1024 * 1024 * 1024 )
+    ]
+    channel = grpc.insecure_channel("localhost:50051", options)
     stub = yolox_pb2_grpc.YoloxStub(channel)
-    response = stub.Inference(yolox_pb2.B64Image(b64image=byte_arr))
+
+    data = base64.b64encode(img_arr)
+
+    request_data = yolox_pb2.B64Image(
+        b64image=data, 
+        width=img_arr.shape[0], 
+        height=img_arr.shape[1]
+    )
+    response = stub.Inference(request_data)
 
     return response.bbox_arr
 

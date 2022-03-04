@@ -21,8 +21,6 @@ def grpc_call(img_arr):
     )
     response = stub.Inference(request_data)
 
-    print(response.bbox_arr)
-
     return response.bbox_arr
 
 
