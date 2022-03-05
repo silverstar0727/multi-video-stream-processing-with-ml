@@ -45,7 +45,6 @@ class ConsumerThread:
             img_arr = self._byte_2_img(message.value)
             results = grpc_call(img_arr)
             self._send_results(results)
-            print(results)
 
     def local(self):
         for msg_idx, message in enumerate(self.consumer):
