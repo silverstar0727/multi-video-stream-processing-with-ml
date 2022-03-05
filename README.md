@@ -34,3 +34,5 @@ python grpc_server/server.py
 ~~~
 python consumer.py
 ~~~
+
+### [Blog](https://velog.io/@djm0727/kafka%EB%A1%9C-%EB%B9%84%EB%94%94%EC%98%A4-%EC%8A%A4%ED%8A%B8%EB%A6%BC-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-w-Yolox)
