@@ -1,6 +1,4 @@
-*.avi
-*.mp4
+videos
 venv
 __pycache__
 *.onnx
-*.jpg
