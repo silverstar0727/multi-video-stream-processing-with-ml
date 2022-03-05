@@ -1,5 +1,11 @@
 ## Multi-Video-Stream-Processing-with-ML
 
+### Architecture
+다수의 엣지 디바이스에서 스트리밍 형태로 데이터를 받아오게 되면, 카프카 클러스터는 이를 받아 와서 gRPC서버로 inference요청을 보내고, 결과를 다시 카프카 클러스터의 다른 토픽으로 저장하는 구조.
+
+![image](./images/architecture.png)
+
+
 ### Usage
 1. 카프카 클러스터 실행
 ~~~
