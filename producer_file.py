@@ -8,9 +8,8 @@ import time
 from utils import serializeImg
 
 class ProducerThread:
-    def __init__(self, ):
-        self.bootstrap_servers = ["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]
-        self.producer = KafkaProducer(bootstrap_servers=self.bootstrap_servers)
+    def __init__(self, bootstrap_servers=["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]):
+        self.producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
     def publish_frame(self, video_path):
         video = cv2.VideoCapture(video_path)
