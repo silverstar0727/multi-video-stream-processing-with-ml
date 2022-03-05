@@ -56,7 +56,6 @@ class ConsumerThread:
     def run(self, num_threads):
         for _ in range(num_threads):
             t = threading.Thread(target=self.client)
-            t.daemon = True
             t.start()
 
         self.producer.flush()
@@ -66,4 +65,4 @@ if __name__ == "__main__":
         bootstrap_servers=["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]
     )
 
-    consumer_thread.grpc()
+    consumer_thread.run(1)
