@@ -10,7 +10,7 @@ import json
 
 from utils import predict
 
-class YoloxServer(yolox_pb2_grpc.YoloxServicer):
+class YoloxServicer(yolox_pb2_grpc.YoloxServicer):
 
     def Inference(self, request, context):
         data = base64.b64decode(request.b64image)
@@ -32,7 +32,7 @@ def serve():
         options=options
     )
 
-    yolox_pb2_grpc.add_YoloxServicer_to_server(YoloxServer(), server)
+    yolox_pb2_grpc.add_YoloxServicer_to_server(YoloxServicer(), server)
     server.add_insecure_port('[::]:50051')
 
     server.start()
