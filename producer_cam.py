@@ -5,11 +5,7 @@ import cv2
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
 
-producer = KafkaProducer(bootstrap_servers='localhost:9092')
-topic = 'my-topic'
-
-
-def emit_video(path_to_video):
+def emit_video(path_to_video, producer, topic_name="VideoStream"):
     print('start')
 
     video = cv2.VideoCapture(path_to_video)
@@ -29,6 +25,8 @@ def emit_video(path_to_video):
             print(e)
             break
 
-        print('.', end='', flush=True)
+if __nam__ == "__main__":
+    bootstrap_servers=["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]
+    producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
-emit_video(0)
+    emit_video(0, producer)
