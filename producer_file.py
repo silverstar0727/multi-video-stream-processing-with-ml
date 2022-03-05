@@ -8,7 +8,7 @@ import time
 from utils import serializeImg
 
 class ProducerThread:
-    def __init__(self, bootstrap_servers=["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]):
+    def __init__(self, bootstrap_servers):
         self.producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
     def publish_frame(self, video_path):
@@ -43,6 +43,8 @@ if __name__ == "__main__":
     video_paths = glob.glob(video_dir + "*.mp4")
     print(video_paths)
 
-    producer_thread = ProducerThread()
+    producer_thread = ProducerThread(
+        bootstrap_servers=["34.125.104.58:9091", "34.125.104.58:9092", "34.125.104.58:9093"]
+    )
     producer_thread.start(video_paths)
     # producer_thread.publish_frame(video_paths)
