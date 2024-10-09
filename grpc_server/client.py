@@ -25,5 +25,5 @@ def grpc_call(img_arr, grpc_server_url="localhost:50051"):
 
 
 if __name__ == "__main__":
-    img_arr = cv2.imread("/home/dojm.ex5/multi-video-stream/videos/KOR_DaeguSmartcity_BisanNegeori-E_20211129T075944+0900_00001.jpg", cv2.IMREAD_COLOR)
+    img_arr = cv2.imread("/", cv2.IMREAD_COLOR)
     grpc_call(img_arr)
